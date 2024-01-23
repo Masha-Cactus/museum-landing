@@ -1,0 +1,73 @@
+.slideshow {
+  position: relative;
+  display: none;
+  justify-content: center;
+
+  @include onDesktop {
+    display: flex;
+    width: $desktop-min-width;
+  }
+
+  &__inner {
+    width: $desktop-min-width;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    list-style: none;
+    height: 100%;
+    position: relative;
+    left: 0;
+    column-gap: 30px;
+    row-gap: 30px;
+    width: fit-content;
+    transition: left 0.8s cubic-bezier(0.77, 0, 0.17, 1);
+    @include pageGrid;
+  }
+
+  &__slide {
+    height: 600px;
+    float: left;
+
+    &--4 {
+      grid-column: 1/9;
+      height: 360px;
+    }
+
+    @include onDesktop {
+      width: fit-content;
+
+      &--2 {
+        display: none;
+      }
+    }
+
+    &--1 {
+      @include onDesktop {
+        grid-column: 1/5;
+      }
+    }
+
+    &--3 {
+      @include onDesktop {
+        grid-column: 5/-1;
+      }
+    }
+
+    &--5 {
+      @include onDesktop {
+        grid-column: 9/-1;
+        height: 360px;
+      }
+    }
+  }
+
+  &__picture {
+    height: 100%;
+    object-fit: contain;
+  }
+}
